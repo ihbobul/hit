@@ -1,7 +1,8 @@
-package com.hit;
+package com.hit.repository;
 
 import static io.micronaut.data.model.query.builder.sql.Dialect.POSTGRES;
 
+import com.hit.model.entity.RefreshTokenEntity;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.repository.CrudRepository;

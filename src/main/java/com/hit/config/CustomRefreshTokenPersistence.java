@@ -1,5 +1,7 @@
-package com.hit;
+package com.hit.config;
 
+import com.hit.model.entity.RefreshTokenEntity;
+import com.hit.repository.RefreshTokenRepository;
 import io.micronaut.security.authentication.Authentication;
 import io.micronaut.security.errors.OauthErrorResponseException;
 import io.micronaut.security.token.event.RefreshTokenGeneratedEvent;

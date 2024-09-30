@@ -1,4 +1,4 @@
-package com.hit;
+package com.hit.provider;
 
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.annotation.Nullable;

@@ -1,5 +1,6 @@
 package com.hit;
 
+import com.hit.repository.RefreshTokenRepository;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;

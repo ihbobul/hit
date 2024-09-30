@@ -1,4 +1,4 @@
-package com.hit;
+package com.hit.model.entity;
 
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.data.annotation.DateCreated;

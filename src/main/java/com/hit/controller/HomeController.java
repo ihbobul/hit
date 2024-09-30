@@ -1,4 +1,4 @@
-package com.hit;
+package com.hit.controller;
 
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
