@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  hit-db:
+    image: postgres
+    container_name: hit-db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: hit-db
+    ports:
+      - "5436:5432"

@@ -1,17 +1,16 @@
 package com.hit;
 
+import static io.micronaut.data.model.query.builder.sql.Dialect.POSTGRES;
+
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.repository.CrudRepository;
-
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 
-import static io.micronaut.data.model.query.builder.sql.Dialect.H2;
-
-@JdbcRepository(dialect = H2)
+@JdbcRepository(dialect = POSTGRES)
 public interface RefreshTokenRepository extends CrudRepository<RefreshTokenEntity, Long> {
 
   @Transactional

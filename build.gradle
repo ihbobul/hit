@@ -27,7 +27,7 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql")
     testImplementation("io.micronaut:micronaut-http-client")
     aotPlugins platform("io.micronaut.platform:micronaut-platform:4.6.2")
     aotPlugins("io.micronaut.security:micronaut-security-aot")
