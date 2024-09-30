@@ -1,5 +1,6 @@
 package com.hit;
 
+import com.hit.client.AppClient;
 import com.nimbusds.jwt.JWTParser;
 import com.nimbusds.jwt.SignedJWT;
 import io.micronaut.security.authentication.UsernamePasswordCredentials;

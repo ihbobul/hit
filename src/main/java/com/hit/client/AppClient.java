@@ -1,4 +1,4 @@
-package com.hit;
+package com.hit.client;
 
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
