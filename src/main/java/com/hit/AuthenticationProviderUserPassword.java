@@ -1,4 +1,4 @@
-package com.hit.provider;
+package com.hit;
 
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.annotation.Nullable;
@@ -10,14 +10,14 @@ import io.micronaut.security.authentication.provider.HttpRequestAuthenticationPr
 import jakarta.inject.Singleton;
 
 @Singleton
-public class AuthenticationProviderUserPassword<B> implements HttpRequestAuthenticationProvider<B> {
+class AuthenticationProviderUserPassword<B> implements HttpRequestAuthenticationProvider<B> {
+
   @Override
   public AuthenticationResponse authenticate(
       @Nullable HttpRequest<B> httpRequest,
       @NonNull AuthenticationRequest<String, String> authenticationRequest
   ) {
-    return authenticationRequest.getIdentity().equals("sherlock") &&
-        authenticationRequest.getSecret().equals("password")
+    return authenticationRequest.getIdentity().equals("sherlock") && authenticationRequest.getSecret().equals("password")
         ? AuthenticationResponse.success(authenticationRequest.getIdentity())
         : AuthenticationResponse.failure(AuthenticationFailureReason.CREDENTIALS_DO_NOT_MATCH);
   }

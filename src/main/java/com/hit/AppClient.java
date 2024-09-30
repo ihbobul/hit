@@ -1,7 +1,4 @@
-package com.hit.client;
-
-import static io.micronaut.http.HttpHeaders.AUTHORIZATION;
-import static io.micronaut.http.MediaType.TEXT_PLAIN;
+package com.hit;
 
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Consumes;
@@ -11,6 +8,9 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.security.authentication.UsernamePasswordCredentials;
 import io.micronaut.security.token.render.BearerAccessRefreshToken;
+
+import static io.micronaut.http.HttpHeaders.AUTHORIZATION;
+import static io.micronaut.http.MediaType.TEXT_PLAIN;
 
 @Client("/")
 public interface AppClient {
