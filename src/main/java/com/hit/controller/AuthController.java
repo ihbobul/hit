@@ -1,5 +1,6 @@
 package com.hit.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.hit.model.dto.SignupDTO;
 import com.hit.model.entity.UserEntity;
 import com.hit.model.mapper.UserMapper;
@@ -33,8 +34,13 @@ public class AuthController {
       return HttpResponse.badRequest("Email is already taken");
     }
 
-    UserEntity userEntity = userMapper.toEntity(
-        new SignupDTO(signupDTO.username(), signupDTO.password(), signupDTO.email()));
+    String hashedPassword = BCrypt.withDefaults()
+        .hashToString(12, signupDTO.password().toCharArray());
+
+    SignupDTO signupDTOWithHashedPassword = new SignupDTO(signupDTO.username(), hashedPassword,
+        signupDTO.email());
+
+    UserEntity userEntity = userMapper.toEntity(signupDTOWithHashedPassword);
 
     userRepository.save(userEntity);
 
