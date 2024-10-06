@@ -41,10 +41,10 @@ public class CustomRefreshTokenPersistence implements RefreshTokenPersistence {
       Optional<RefreshTokenEntity> tokenOpt = refreshTokenRepository.findByRefreshToken(refreshToken);
       if (tokenOpt.isPresent()) {
         RefreshTokenEntity token = tokenOpt.get();
-        if (token.getRevoked()) {
+        if (token.revoked()) {
           emitter.error(new OauthErrorResponseException(INVALID_GRANT, "refresh token revoked", null));
         } else {
-          emitter.next(Authentication.build(token.getUsername()));
+          emitter.next(Authentication.build(token.username()));
           emitter.complete();
         }
       } else {

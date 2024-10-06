@@ -10,75 +10,28 @@ import jakarta.validation.constraints.NotNull;
 import java.time.Instant;
 
 @MappedEntity
-public class RefreshTokenEntity {
+public record RefreshTokenEntity(
+    @Id
+    @GeneratedValue
+    @NonNull
+    Long id,
 
-  @Id
-  @GeneratedValue
-  @NonNull
-  private Long id;
+    @NonNull
+    @NotBlank
+    String username,
 
-  @NonNull
-  @NotBlank
-  private String username;
+    @NonNull
+    @NotBlank
+    String refreshToken,
 
-  @NonNull
-  @NotBlank
-  private String refreshToken;
+    @NonNull
+    @NotNull
+    Boolean revoked,
 
-  @NonNull
-  @NotNull
-  private Boolean revoked;
+    @DateCreated
+    @NonNull
+    @NotNull
+    Instant dateCreated
+) {
 
-  @DateCreated
-  @NonNull
-  @NotNull
-  private Instant dateCreated;
-
-  public RefreshTokenEntity() {
-  }
-
-  @NonNull
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(@NonNull Long id) {
-    this.id = id;
-  }
-
-  @NonNull
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(@NonNull String username) {
-    this.username = username;
-  }
-
-  @NonNull
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-
-  public void setRefreshToken(@NonNull String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-  @NonNull
-  public Boolean getRevoked() {
-    return revoked;
-  }
-
-  public void setRevoked(@NonNull Boolean revoked) {
-    this.revoked = revoked;
-  }
-
-  @NonNull
-  public Instant getDateCreated() {
-    return dateCreated;
-  }
-
-  public void setDateCreated(@NonNull Instant dateCreated) {
-    this.dateCreated = dateCreated;
-  }
 }
