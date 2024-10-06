@@ -25,4 +25,5 @@ public class AuthController {
     authService.signup(signupDTO);
     return HttpResponse.ok("User created successfully.");
   }
+
 }
