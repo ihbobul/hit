@@ -7,6 +7,7 @@ import io.micronaut.security.errors.OauthErrorResponseException;
 import io.micronaut.security.token.event.RefreshTokenGeneratedEvent;
 import io.micronaut.security.token.refresh.RefreshTokenPersistence;
 import jakarta.inject.Singleton;
+import java.time.Instant;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
@@ -31,7 +32,7 @@ public class CustomRefreshTokenPersistence implements RefreshTokenPersistence {
         event.getAuthentication() != null &&
         event.getAuthentication().getName() != null) {
       String payload = event.getRefreshToken();
-      refreshTokenRepository.save(event.getAuthentication().getName(), payload, false);
+      refreshTokenRepository.save(event.getAuthentication().getName(), payload, false, Instant.now());
     }
   }
 
@@ -41,10 +42,10 @@ public class CustomRefreshTokenPersistence implements RefreshTokenPersistence {
       Optional<RefreshTokenEntity> tokenOpt = refreshTokenRepository.findByRefreshToken(refreshToken);
       if (tokenOpt.isPresent()) {
         RefreshTokenEntity token = tokenOpt.get();
-        if (token.revoked()) {
+        if (token.getRevoked()) {
           emitter.error(new OauthErrorResponseException(INVALID_GRANT, "refresh token revoked", null));
         } else {
-          emitter.next(Authentication.build(token.username()));
+          emitter.next(Authentication.build(token.getUsername()));
           emitter.complete();
         }
       } else {

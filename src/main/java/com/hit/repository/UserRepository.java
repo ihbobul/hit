@@ -1,13 +1,11 @@
 package com.hit.repository;
 
-import static io.micronaut.data.model.query.builder.sql.Dialect.POSTGRES;
-
 import com.hit.model.entity.UserEntity;
-import io.micronaut.data.jdbc.annotation.JdbcRepository;
+import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 import java.util.Optional;
 
-@JdbcRepository(dialect = POSTGRES)
+@Repository
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
   boolean existsByUsername(String username);
