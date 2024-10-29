@@ -20,7 +20,7 @@ public class AuthService {
     this.userMapper = userMapper;
   }
 
-  public UserEntity signup(SignupDTO signupDTO) {
+  public void signup(SignupDTO signupDTO) {
     if (userRepository.existsByUsername(signupDTO.username())) {
       throw new UsernameAlreadyExistsException("Username is already taken.");
     }
@@ -35,10 +35,10 @@ public class AuthService {
     SignupDTO signupDTOWithHashedPassword = new SignupDTO(signupDTO.username(), hashedPassword,
         signupDTO.email());
 
-    UserEntity userEntity = userMapper.toEntity(signupDTOWithHashedPassword);
+    // FIXME: Mapping is not working, so we need to create the entity manually
+    UserEntity userEntity = new UserEntity(signupDTOWithHashedPassword.username(),
+        signupDTOWithHashedPassword.password(), signupDTOWithHashedPassword.email());
 
     userRepository.save(userEntity);
-
-    return userEntity;
   }
 }

@@ -18,11 +18,11 @@ dependencies {
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
     implementation("io.micrometer:context-propagation")
-    implementation("io.micronaut.data:micronaut-data-jdbc")
+    implementation 'io.micronaut.data:micronaut-data-hibernate-jpa'
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.reactor:micronaut-reactor")
     implementation("io.micronaut.security:micronaut-security-jwt")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.validation:micronaut-validation")
     implementation("jakarta.validation:jakarta.validation-api")
     implementation("at.favre.lib:bcrypt:0.9.0")

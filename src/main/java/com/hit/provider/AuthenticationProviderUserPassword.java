@@ -39,10 +39,10 @@ class AuthenticationProviderUserPassword<B> implements HttpRequestAuthentication
 
   private AuthenticationResponse verifyPassword(UserEntity userEntity, String password) {
     BCrypt.Result result = BCrypt.verifyer()
-        .verify(password.toCharArray(), userEntity.password());
+        .verify(password.toCharArray(), userEntity.getPassword());
 
     return result.verified
-        ? AuthenticationResponse.success(userEntity.username())
+        ? AuthenticationResponse.success(userEntity.getUsername())
         : AuthenticationResponse.failure(AuthenticationFailureReason.CREDENTIALS_DO_NOT_MATCH);
   }
 }
